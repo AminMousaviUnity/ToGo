@@ -6,13 +6,20 @@ import (
 
 	"github.com/AminMousaviUnity/ToGo/config"
 	"github.com/AminMousaviUnity/ToGo/internal/api"
+	"github.com/AminMousaviUnity/ToGo/internal/db"
 	"github.com/AminMousaviUnity/ToGo/internal/repository"
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
 )
 
 func main() {
-	_ = godotenv.Load()
+	if err := godotenv.Load(); err != nil {
+		log.Println("No .env file found, using default configuations.")
+	}
+
+	db.RunMigrations()
+
+
 	db := config.ConnectDB()
 	defer db.Close()
 
