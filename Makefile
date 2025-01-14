@@ -24,5 +24,5 @@ build:
 down:
 	docker compose down
 
-ToGo:
-	docker compose up -d
+ToGo: build
+	docker compose up --build -d
