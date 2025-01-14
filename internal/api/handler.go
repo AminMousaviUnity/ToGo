@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/gorilla/mux"
 	"github.com/AminMousaviUnity/ToGo/internal/models"
 	"github.com/AminMousaviUnity/ToGo/internal/service"
+	"github.com/gorilla/mux"
 )
 
 type Handler struct {
@@ -99,5 +99,5 @@ func (h *Handler) DeleteTask(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte("Task deleted successfully!"))
+	w.Write([]byte("Task deleted successfully!\n"))
 }

@@ -8,12 +8,12 @@ import (
 )
 
 func RunMigrations() {
-	dsn := os.Getenv("DATABASE_URL")
-    if dsn == "" {
+	dbURL := os.Getenv("DATABASE_URL")
+    if dbURL == "" {
         log.Fatal("DATABASE_URL environment variable is not set")
     }
 
-	cmd := exec.Command("migrate", "-database", dsn, "-path", "migrations", "up")
+	cmd := exec.Command("migrate", "-database", dbURL, "-path", "migrations", "up")
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 
